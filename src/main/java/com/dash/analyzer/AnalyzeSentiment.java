@@ -1,8 +1,17 @@
 package com.dash.analyzer;
 
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
+import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.util.CoreMap;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 public class AnalyzeSentiment {
 
@@ -16,7 +25,29 @@ public class AnalyzeSentiment {
         return new StringBuilder(s).reverse().toString();
     }
 
-    public static int score(String txt) {
+    public static int sentiment_analysis(String s) {
+
+        //Resource: https://aboullaite.me/stanford-corenlp-java/
+
+        // set up pipeline properties
+        Properties props = new Properties();
+
+        // set the list of annotators to run
+        props.setProperty("annotators", "tokenize,ssplit,pos,parse,sentiment");
+
+        // build pipeline
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+
+        // scores "s"ting from 0 to 4 based on whether the analysis comes back with Very Negative, Negative, Neutral, Positive or Very Positive respectively
+        Annotation annotation = pipeline.process(s);
+        for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
+            Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
+            return RNNCoreAnnotations.getPredictedClass(tree);
+        }
+        return 0;
+    }
+
+    public static int score_sentiment(String txt) {
 
         AnalyzeSentiment analyzeSentiment = new AnalyzeSentiment();
 
