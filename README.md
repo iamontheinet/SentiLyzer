@@ -8,9 +8,11 @@ Java project that contains methods for performing sentiment analysis on text usi
 
 After cloning the project, run `mvn package`. If all goes well, this will create **SentiLyzer-1.0-SNAPSHOT-jar-with-dependencies.jar** in the target folder.
 
+
 ### Step 2
 
 Use the [Snowflake CLI](https://docs.snowflake.com/en/user-guide/snowsql.html) to upload the jar once it is compiled locally. Follow the instructions here to install the [Snowflake CLI](https://docs.snowflake.com/en/user-guide/snowsql-install-config.html).
+
 
 ### Step 3
 
@@ -19,7 +21,7 @@ Use the [Snowflake CLI](https://docs.snowflake.com/en/user-guide/snowsql.html) t
 
 3.b Set the database, schema, and warehouse by running the following command.
 
-```sql
+```
   use database <YOUR_DATABASE>;
   use schema <YOUR_SCHEMA>;
   use warehouse <YOUR_WAREHOUSE>;
@@ -48,10 +50,9 @@ handler = 'com.dash.analyzer.AnalyzeSentiment.sentiment_analysis';
 
 ### Step 4
 
-Use the `sentiment_analysis` UDF in your SQL queries. For example:
+Use the `sentiment_analysis` UDF in your SQL queries in Snowflake. For example, to score reviews from AMAZON_REVIEWS table in Snowflake:
 
 ```sql
 SELECT REVIEW, sentiment_analysis(REVIEW) as SCORE from AMAZON_REVIEWS;
 
 ```
-
