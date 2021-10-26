@@ -47,6 +47,7 @@ language java
 imports = ('@~/<YOUR_SNOWFLAKE_STAGE_NAME>/SentiLyzer-1.0-SNAPSHOT-jar-with-dependencies.jar')
 handler = 'com.dash.analyzer.AnalyzeSentiment.sentiment_analysis';
 ```
+
 ### Step 4
 
 Use the `sentiment_analysis` UDF in your SQL queries in Snowflake. For example, to score reviews from AMAZON_REVIEWS table in Snowflake:
