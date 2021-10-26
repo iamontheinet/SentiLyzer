@@ -53,6 +53,6 @@ handler = 'com.dash.analyzer.AnalyzeSentiment.sentiment_analysis';
 Use the `sentiment_analysis` UDF in your SQL queries in Snowflake. For example, to score reviews from AMAZON_REVIEWS table in Snowflake:
 
 ```sql
-SELECT REVIEW, sentiment_analysis(REVIEW) as SCORE from AMAZON_REVIEWS;
-
+SELECT REVIEW, sentiment_analysis(REVIEW) as SCORE 
+FROM AMAZON_REVIEWS;
 ```
