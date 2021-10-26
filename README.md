@@ -28,7 +28,7 @@ Use the [Snowflake CLI](https://docs.snowflake.com/en/user-guide/snowsql.html) t
 3.c Upload the jar to Snowflake by running the following command.
 
 
-```sql
+```
 put file:///<full-path>/target/SentiLyzer-1.0-SNAPSHOT-jar-with-dependencies.jar
 @~/<YOUR_SNOWFLAKE_STAGE_NAME>/
 auto_compress = false
@@ -38,8 +38,8 @@ overwrite = true;
 3.d Create the UDF in Snowflake by running the following command.
 
 
-```sql
-create or replace function sentiment_analysis(s string)
+```
+create or replace function sentiment_analysis(s varchar)
 returns numeric
 language java
 imports = ('@~/<YOUR_SNOWFLAKE_STAGE_NAME>/SentiLyzer-1.0-SNAPSHOT-jar-with-dependencies.jar')
