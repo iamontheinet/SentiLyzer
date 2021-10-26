@@ -27,8 +27,6 @@ public class AnalyzeSentiment {
 
     public static int sentiment_analysis(String s) {
 
-        //Resource: https://aboullaite.me/stanford-corenlp-java/
-
         // set up pipeline properties
         Properties props = new Properties();
 
@@ -38,7 +36,7 @@ public class AnalyzeSentiment {
         // build pipeline
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
-        // scores "s"ting from 0 to 4 based on whether the analysis comes back with Very Negative, Negative, Neutral, Positive or Very Positive respectively
+        // scores "s"tring from 0 to 4 based on whether the analysis comes back with Very Negative, Negative, Neutral, Positive or Very Positive respectively
         Annotation annotation = pipeline.process(s);
         for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
             Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
