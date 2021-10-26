@@ -22,9 +22,9 @@ Use the [Snowflake CLI](https://docs.snowflake.com/en/user-guide/snowsql.html) t
 3.b Set the database, schema, and warehouse by running the following command.
 
 ```
-  use database <YOUR_DATABASE>;
-  use schema <YOUR_SCHEMA>;
-  use warehouse <YOUR_WAREHOUSE>;
+use database <YOUR_DATABASE>;
+use schema <YOUR_SCHEMA>;
+use warehouse <YOUR_WAREHOUSE>;
 ```
 
 3.c Upload the jar to Snowflake by running the following command.
@@ -47,7 +47,6 @@ language java
 imports = ('@~/<YOUR_SNOWFLAKE_STAGE_NAME>/SentiLyzer-1.0-SNAPSHOT-jar-with-dependencies.jar')
 handler = 'com.dash.analyzer.AnalyzeSentiment.sentiment_analysis';
 ```
-
 ### Step 4
 
 Use the `sentiment_analysis` UDF in your SQL queries in Snowflake. For example, to score reviews from AMAZON_REVIEWS table in Snowflake:
