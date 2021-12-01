@@ -16,7 +16,7 @@ Use the [Snowflake CLI](https://docs.snowflake.com/en/user-guide/snowsql.html) t
 
 ### Step 3
 
-3.a Start a SnowSQL session at the command line by running `snowsql -a streamsets -u <YOUR_USER_NAME>`
+3.a Start a SnowSQL session at the command line by running `snowsql -a <YOUR_SNOWFLAKE_ACCOUNT> -u <YOUR_USER_NAME>`
 
 
 3.b Set the database, schema, and warehouse by running the following command.
